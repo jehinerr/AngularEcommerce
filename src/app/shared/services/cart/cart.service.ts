@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Product } from '../../models/product.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cartDataList: any = [];
+  cartDataList: Product[] = [];
   productList = new BehaviorSubject<any>([]);
 
   constructor(private http: HttpClient) {}
@@ -15,12 +16,12 @@ export class CartService {
     return this.productList.asObservable();
   }
 
-  setProduct(product: any) {
-    this.cartDataList.push(...product);
+  setProduct(product: Product) {
+    this.cartDataList.push(...[product]);
     this.productList.next(product);
   }
 
-  addToCart(product: any) {
+  addToCart(product: Product) {
     this.cartDataList.push(product);
     this.productList.next(this.cartDataList);
     this.getTotalAmount();
@@ -35,9 +36,9 @@ export class CartService {
     return total;
   }
 
-  removeCartData(product: any) {
-    this.cartDataList.map((a: any, index: number) => {
-      if (product.id === a.id) this.cartDataList.splice(index, 1);
+  removeCartData(product: Product) {
+    this.cartDataList.map((item: Product, index: number) => {
+      if (product.id === item.id) this.cartDataList.splice(index, 1);
     });
   }
 

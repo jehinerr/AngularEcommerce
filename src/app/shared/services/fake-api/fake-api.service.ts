@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Product } from '../../models/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,10 @@ import { map } from 'rxjs/operators';
 export class FakeApiService {
   constructor(private http: HttpClient) {}
 
-  getProductList(): Observable<string> {
+  getProductList(): Observable<Product[]> {
     return this.http.get('https://fakestoreapi.com/products').pipe(
-      map((response: any) => {
-        return response;
+      map((res: any) => {
+        return res;
       })
     );
   }

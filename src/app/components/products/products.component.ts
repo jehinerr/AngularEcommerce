@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { FakeApiService } from '../../shared/services/fake-api/fake-api.service';
 
@@ -8,22 +9,22 @@ import { FakeApiService } from '../../shared/services/fake-api/fake-api.service'
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  productList: any;
+  productList: Product[] = [];
   constructor(
     private fakeApi: FakeApiService,
     private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    this.fakeApi.getProductList().subscribe((res) => {
-      this.productList = res;
-      this.productList.forEach((a: any) => {
-        Object.assign(a, { quantity: 1, total: a.price });
+    this.fakeApi.getProductList().subscribe((productList: Product[]) => {
+      this.productList = productList;
+      this.productList.forEach((item: Product) => {
+        Object.assign(item, { quantity: 1, total: item.price });
       });
     });
   }
 
-  addToCart(product: any) {
+  addToCart(product: Product) {
     this.cartService.addToCart(product);
   }
 }
