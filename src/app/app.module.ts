@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
-import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductsComponent } from './components/products/products.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -16,16 +15,17 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { appReducers } from './app.reducer';
+import { CartFooterComponent } from './components/cart/cart-footer/cart-footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
-    ProductItemComponent,
     ProductsComponent,
     HomeComponent,
     CartHeaderComponent,
     CartItemComponent,
+    CartFooterComponent,
   ],
   imports: [
     AppRoutingModule,

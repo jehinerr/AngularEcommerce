@@ -20,7 +20,7 @@ export class CartItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  removeProduct(product: Product) {
+  deleteProduct(product: Product) {
     this.store.dispatch(deleteProductFromCart({ id: product.id }));
   }
 }

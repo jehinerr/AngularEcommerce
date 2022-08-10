@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
 import { CartHeaderComponent } from './cart-header.component';
 
 describe('CartHeaderComponent', () => {
@@ -8,9 +8,8 @@ describe('CartHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartHeaderComponent ]
-    })
-    .compileComponents();
+      providers: [provideMockStore({})],
+    }).compileComponents();
   });
 
   beforeEach(() => {

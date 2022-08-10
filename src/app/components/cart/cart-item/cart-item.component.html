@@ -5,7 +5,7 @@
         <img src="{{product.image}}" alt="">
         <h5 class="product-info">{{product.title}}</h5>
         <p><strong>Price: </strong>${{product.price}}</p>
-        <button class="btn btn-danger" (click)="removeProduct(product)">Delete</button>
+        <button class="btn btn-danger" (click)="deleteProduct(product)" data-test="cart-item__delete">Delete</button>
       </div>
     </ng-container>
   </div>

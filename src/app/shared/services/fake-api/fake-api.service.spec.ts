@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { FakeApiService } from './fake-api.service';
@@ -6,7 +7,10 @@ describe('FakeApiService', () => {
   let service: FakeApiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [FakeApiService],
+    });
     service = TestBed.inject(FakeApiService);
   });
 
