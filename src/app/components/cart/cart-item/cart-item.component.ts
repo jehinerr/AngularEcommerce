@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { Product } from 'src/app/shared/models/product.model';
+import { deleteProductFromCart } from '../cart.actions';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,26 +10,17 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
   styleUrls: ['./cart-item.component.css'],
 })
 export class CartItemComponent implements OnInit {
-  productList: any = [];
-  productsAmount = 0;
-  constructor(private cartService: CartService) {}
+  productList: Product[] = [];
 
-  ngOnInit(): void {
-    this.getData();
-  }
-
-  getData() {
-    this.cartService.getProductData().subscribe((res) => {
-      this.productList = res;
-      this.productsAmount = this.cartService.getTotalAmount();
+  constructor(private store: Store<AppState>) {
+    this.store.subscribe((state) => {
+      this.productList = state.cart;
     });
   }
 
-  removeProduct(product: any) {
-    this.cartService.removeCartData(product);
-  }
+  ngOnInit(): void {}
 
-  removeAllProducts() {
-    this.cartService.removeAllCart();
+  removeProduct(product: Product) {
+    this.store.dispatch(deleteProductFromCart({ id: product.id }));
   }
 }

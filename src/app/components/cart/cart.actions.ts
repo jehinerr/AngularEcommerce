@@ -1,3 +1,11 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const getCartItems = createAction('[Ecommerce] Get Cart items');
+export const addNewProduct = createAction(
+  '[Ecommerce] Add product to cart',
+  props<{ id: number; title: string; price: number; image: string }>()
+);
+
+export const deleteProductFromCart = createAction(
+  '[Ecommerce] Delete product from cart',
+  props<{ id: number }>()
+);

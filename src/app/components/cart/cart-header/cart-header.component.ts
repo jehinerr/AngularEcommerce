@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
@@ -9,11 +11,11 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
 export class CartHeaderComponent implements OnInit {
   totalItems: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.cartService.getProductData().subscribe((res) => {
-      this.totalItems = res.length;
+    this.store.subscribe((state) => {
+      this.totalItems = state.cart.length;
     });
   }
 }

@@ -6,5 +6,11 @@ const initialState: Product[] = [];
 
 export const cartReducer = createReducer(
   initialState,
-  on(actions.getCartItems, (state) => state)
+  on(actions.addNewProduct, (state, { id, title, price, image }) => [
+    ...state,
+    new Product(id, title, price, image),
+  ]),
+  on(actions.deleteProductFromCart, (state, { id }) =>
+    state.filter((todo) => todo.id !== id)
+  )
 );
