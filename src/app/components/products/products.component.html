@@ -5,7 +5,7 @@
         <img src="{{product.image}}" alt="">
         <h6 class="product-info">{{product.title}}</h6>
         <p><strong>Price: </strong>${{product.price}}</p>
-        <button class="btn btn-primary" (click)="addToCart(product)">Add</button>
+        <button class="btn btn-primary" (click)="addToCart(product)" data-test="product-item__add">Add</button>
       </div>
     </ng-container>
   </div>

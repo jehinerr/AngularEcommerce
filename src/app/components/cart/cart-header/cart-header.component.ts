@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart-header',

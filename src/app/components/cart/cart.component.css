@@ -1,4 +1,15 @@
 .cart-container {
-  height: 300px !important;
-  ;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  overflow-x: hidden;
+  border-left: 1px solid black;
+}
+
+.cart-footer {
+  bottom: 0;
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+  justify-content: space-between;
 }

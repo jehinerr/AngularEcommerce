@@ -1,11 +1,18 @@
-<div class="product-container">
+<div class="cart-product-container">
   <div class="row">
     <ng-container *ngFor="let product of productList">
       <div class="card">
-        <img src="{{product.image}}" alt="">
-        <h5 class="product-info">{{product.title}}</h5>
-        <p><strong>Price: </strong>${{product.price}}</p>
-        <button class="btn btn-danger" (click)="deleteProduct(product)" data-test="cart-item__delete">Delete</button>
+        <div class="product-template">
+          <div class="product-image">
+            <img src="{{product.image}}" alt="">
+          </div>
+          <div class="product-data">
+            <h5 class="product-info">{{product.title}}</h5>
+            <p><strong>Count: </strong>1</p>
+            <button class="btn btn-danger" (click)="deleteProduct(product)"
+              data-test="cart-item__delete">Delete</button>
+          </div>
+        </div>
       </div>
     </ng-container>
   </div>

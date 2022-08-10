@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { Product } from 'src/app/shared/models/product.model';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { FakeApiService } from '../../shared/services/fake-api/fake-api.service';
 import * as carActions from '../cart/cart.actions';
 
@@ -15,7 +14,6 @@ export class ProductsComponent implements OnInit {
   productList: Product[] = [];
   constructor(
     private fakeApi: FakeApiService,
-    private cartService: CartService,
     private store: Store<AppState>
   ) {}
 
@@ -25,7 +23,7 @@ export class ProductsComponent implements OnInit {
 
   getData() {
     this.fakeApi.getProductList().subscribe((productList: Product[]) => {
-      this.productList = productList;
+      this.productList = productList.slice(0, 8);
       this.productList.forEach((item: Product) => {
         Object.assign(item, { quantity: 1, total: item.price });
       });
