@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Deployed URL
 
-Navigate to `http://localhost:4200/`. The app will automatically starts, is designed for desktop.
+Navigate to `https://jehinerr.github.io/AngularEcommerce/`. The app will automatically starts, is designed for desktop.
 
 ## Code scaffolding
 
