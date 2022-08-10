@@ -1,0 +1,13 @@
+.cart-header-container {
+  padding: 10px;
+  height: 60px;
+}
+
+.shopping-cart {
+  width: 35px;
+  float: right;
+}
+
+.badge {
+  float: right;
+}
